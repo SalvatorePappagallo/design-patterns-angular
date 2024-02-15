@@ -12,11 +12,10 @@ export class Runnable implements IRunnable {
     this.log = new logger(name);
   }
 
-  main(): void {
-    this.log.getAction(this.main.name);
-    this.run(this.log);
+  async main(): Promise<void> {
+    await this.run(this.log);
     this.log.getAction(this.main.name + ' END');
   }
 
-  run(log: logger): void {}
+  async run(log: logger): Promise<void> {}
 }

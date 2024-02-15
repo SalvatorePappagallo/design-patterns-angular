@@ -16,26 +16,24 @@ export class ActiveObjectComponent extends Runnable {
   constructor() {
     super(ActiveObjectComponent.name);
     this.creatures = [];
+    this.main();
+  }
+
+  reloadLife(){
+    this.creatures = [];
+    this.main();
   }
 
   override async run(log: logger): Promise<void> {
     try {
       for (let i = 0; i < ActiveObjectComponent.NUM_CREATURES; i++) {
-        this.creatures.push(new orc(orc.name + '' + i, log));
-        this.creatures.at(i)?.eat();
-        this.creatures.at(i)?.roam();
+        this.creatures.push(new orc(orc.name + ' ' + i));
       }
-
-      await new threadServices().sleep(1000);
     } catch (e: unknown) {
       if (e instanceof Error) {
         log.getError(e.message);
       } else {
         log.getError('Unknown Error');
-      }
-    } finally {
-      for (let i = 0; i < ActiveObjectComponent.NUM_CREATURES; i++) {
-        this.creatures.at(i)?.kill(0);
       }
     }
   }

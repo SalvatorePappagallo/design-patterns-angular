@@ -6,9 +6,9 @@
 >
   <thead>
     <tr>
-      <th>&nbsp;</th>
       <th scope="col">Name</th>
       <th scope="col">Status</th>
+      <th scope="col">Log</th>
     </tr>
   </thead>
 
@@ -17,7 +17,16 @@
     <tr>
       <td>{{ creature.name }}</td>
       <td>{{ creature.status }}</td>
+      <td>
+        <div>
+          {{ creature.log.toStringLog() }}
+        </div>
+      </td>
     </tr>
     }
   </tbody>
 </table>
+
+<footer>
+  <button class="btn btn-secondary me-2" (click)="reloadLife()"> Reload Life </button>
+</footer>
