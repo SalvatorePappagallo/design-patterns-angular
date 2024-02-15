@@ -1,3 +1,23 @@
-<p>
+<p></p>
+<h1>User Detail</h1>
+<table
+  *ngIf="creatures"
+  class="table table-small table-striped table-dark table-bordered"
+>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
 
-</p>
+  <tbody>
+    @for (creature of creatures; track creature.name) {
+    <tr>
+      <td>{{ creature.name }}</td>
+      <td>{{ creature.status }}</td>
+    </tr>
+    }
+  </tbody>
+</table>

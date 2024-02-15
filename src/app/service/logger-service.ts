@@ -1,4 +1,4 @@
-class logger {
+export class logger {
   constructor(private fullLog: string) {}
 
   getLogger(log: string) {

@@ -1,10 +1,13 @@
-class activeCreature {
-  private thread: threadServices;
-  private status: number;
+import { logger } from "../../service/logger-service";
+import { threadServices } from "../../service/thread-services";
 
-  constructor(protected name: string, private log: logger) {
+export class activeCreature {
+  private thread: threadServices;
+  status: number;
+
+  constructor(public name: string, private log: logger) {
     this.thread = new threadServices();
-    this.status = 0;
+    this.status = 100;
     //this.init();
   }
   /*
@@ -42,7 +45,7 @@ class activeCreature {
   }
 }
 
-class orc extends activeCreature {
+export class orc extends activeCreature {
   constructor(name: string, log: logger) {
     super(name, log);
   }

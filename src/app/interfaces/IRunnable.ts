@@ -1,3 +1,5 @@
+import { logger } from "../service/logger-service";
+
 export interface IRunnable {
   main(): void;
   run(log: logger): void;
