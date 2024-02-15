@@ -10,7 +10,7 @@ import { threadServices } from '../service/thread-services';
   styleUrl: './active-object.component.css',
 })
 export class ActiveObjectComponent extends Runnable {
-  private static NUM_CREATURES = 3;
+  private static NUM_CREATURES = 5;
   creatures: activeCreature[];
 
   constructor() {
@@ -27,7 +27,7 @@ export class ActiveObjectComponent extends Runnable {
   override async run(log: logger): Promise<void> {
     try {
       for (let i = 0; i < ActiveObjectComponent.NUM_CREATURES; i++) {
-        this.creatures.push(new orc(orc.name + ' ' + i));
+        this.creatures.push(new orc(orc.name + ' ' + (i + 1)));
       }
     } catch (e: unknown) {
       if (e instanceof Error) {

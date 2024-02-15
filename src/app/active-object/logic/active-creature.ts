@@ -22,8 +22,8 @@ export class activeCreature {
   }
 
   private config() {
-    this.eatingTime = Math.floor(Math.random() * 5000) + 1;
-    this.roamingTime = Math.floor(Math.random() * 5000) + 1;
+    this.eatingTime = Math.floor(Math.random() * 6000) + 1;
+    this.roamingTime = Math.floor(Math.random() * 6000) + 1;
     this.status = this.eatingTime + this.roamingTime;
 
     console.log(this.eatingTime);
@@ -41,11 +41,13 @@ export class activeCreature {
 
   async countDown() {
     while (this.status > 0) {
-      this.status --;
-      console.log(this.status);
-      await new threadServices().sleep(1);
+      //console.log('status' + this.status);
+      await new threadServices().sleep(10);
+      this.status -= 10;
     }
+    this.status = 0;
   }
+
   /*
   private init(): void{
     boolean infinite = true;
