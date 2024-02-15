@@ -3,7 +3,7 @@ import { threadServices } from '../../service/thread-services';
 
 export class activeCreature {
   private thread: threadServices;
-  status: number= 0;
+  status: number = 0;
   log: logger;
   private eatingTime: number = 0;
   private roamingTime: number = 0;
@@ -17,13 +17,14 @@ export class activeCreature {
 
   private init() {
     this.config();
+    this.countDown();
     this.timeLife();
   }
 
   private config() {
-    this.status = 100;
     this.eatingTime = Math.floor(Math.random() * 5000) + 1;
     this.roamingTime = Math.floor(Math.random() * 5000) + 1;
+    this.status = this.eatingTime + this.roamingTime;
 
     console.log(this.eatingTime);
     console.log(this.roamingTime);
@@ -36,6 +37,14 @@ export class activeCreature {
     console.log('roaming');
     await this.killed(0);
     console.log('killed');
+  }
+
+  async countDown() {
+    while (this.status > 0) {
+      this.status --;
+      console.log(this.status);
+      await new threadServices().sleep(1);
+    }
   }
   /*
   private init(): void{
